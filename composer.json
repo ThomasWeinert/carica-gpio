@@ -1,0 +1,23 @@
+{
+  "name": "carica/gpio",
+  "type": "library",
+  "description": "Gpio library implementing Carica Io Devices",
+  "keywords": ["arduino", "firmata"],
+  "homepage": "https://github.com/ThomasWeinert/carica-gpio",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Thomas Weinert",
+      "email": "thomas@weinert.info"
+    }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "carica/io": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "Carica\\Gpio\\": "src/"
+    }
+  }
+}

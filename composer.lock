@@ -1,0 +1,63 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "ea785f580f6bb03f3f58478a4bdfde04",
+    "packages": [
+        {
+            "name": "carica/io",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ThomasWeinert/carica-io.git",
+                "reference": "e1f9a17f7084cc62e0296b632095d7c1012e079e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ThomasWeinert/carica-io/zipball/e1f9a17f7084cc62e0296b632095d7c1012e079e",
+                "reference": "e1f9a17f7084cc62e0296b632095d7c1012e079e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Carica\\Io\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Weinert",
+                    "email": "thomas@weinert.info"
+                }
+            ],
+            "description": "Non blocking I/O for PHP",
+            "homepage": "https://github.com/ThomasWeinert/carica-io",
+            "keywords": [
+                "asynchronous-io",
+                "non-blocking-io"
+            ],
+            "time": "2015-04-18 20:28:10"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "carica/io": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.4"
+    },
+    "platform-dev": []
+}

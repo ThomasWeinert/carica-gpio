@@ -1,0 +1,11 @@
+
+/.buildpath
+/.project
+/.settings
+/build
+/vendor
+/examples/configuration.php
+/phpunit.xml
+
+/.idea
+
