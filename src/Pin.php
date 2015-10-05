@@ -8,20 +8,19 @@ namespace Carica\Gpio {
   class Pin implements Device\Pin {
     
     use Emitter\Aggregation;
-    
-    const PATH_GPIO = '/sys/class/gpio/gpio';
-    const PATH_EXPORT = '/sys/class/gpio/export';
-    const PATH_UNEXPORT = '/sys/class/gpio/unexport';
-    
-    private $_number = 0;
+
+    const DIRECTION_OUT = 'out';
+    const DIRECTION_IN = 'in';
+
+    private $_pinNumber = 0;
     private $_modes = [];
     private $_mode = 0;
     private $_value = 0; 
 
-    private $_path = NULL;
-    
-    
-    public function __construct($pinNumber, $supports) {
+    private $_isInitialized = NULL;
+
+    public function __construct(Commands $commands, $pinNumber, array $supports = []) {
+      $this->_commands = $commands;
       $this->_pinNumber = (int)$pinNumber;
       foreach ($supports as $mode => $maximum) {
         $this->addMode($mode, $maximum);
@@ -29,23 +28,17 @@ namespace Carica\Gpio {
     }
     
     private function initialize() {
-      if (!$this->_path) {
-        $this->_path = self::PATH_GPIO.'/'.$this->_number;
+      if (!$this->_isInitialized) {
         $this->export();
       }
     }
     
-    public function export() {
-      if (!$this->_path) {
-        $this->initialize();
-      } elseif (!file_exists($this->_path)) {
-        file_put_contents(self::PATH_EXPORT, $this->_pinNumber);
-      }
+    public function export($direction = self::DIRECTION_OUT) {
+      $this->_isInitialized = $this->_commands->export($this->_pinNumber, $direction);
     } 
     
     public function unexport() {
-      file_put_contents(self::PATH_UNEXPORT, $this->_pinNumber);
-      $this->_path = FALSE;
+      $this->_isInitialized = !$this->_commands->unexport($this->_pinNumber);
     }
     
     private function addMode($mode, $maximum) {
@@ -54,13 +47,20 @@ namespace Carica\Gpio {
       case self::MODE_OUTPUT : 
         $this->_modes[$mode] = 1;
         return;
+      case self::MODE_PWM :
+      case self::MODE_ANALOG :
+        $this->_modes[$mode] = $maximum;
       }
       throw new \InvalidArgumentException('Invalid pin mode for pin #', $this->_pinNumber);
     }
     
     private function setValue($value) {
       $this->initialize();
-      file_put_contents($this->_path.'/value', round($value * $this->getMaximum()));
+      if ($this->_mode == self::MODE_PWM) {
+        $this->_commands->pwm($this->_pinNumber, round($value * $this->getMaximum()));
+      } else {
+        $this->_commands->write($this->_pinNumber, $value > 0);
+      }
       if ($value != $this->_value) {
         $this->_value = $value;
         $this->emitEvent('change', $this);
@@ -74,7 +74,7 @@ namespace Carica\Gpio {
     public function setMode($mode) {
       $this->initialize();
       if ($this->supports($mode)) {
-        file_put_contents($this->_path.'/mode', $this->mapPinModeToGpio($mode));
+        $this->_commands->mode($this->_pinNumber, $mode);
         $this->_mode = $mode;
       } else {
         throw new \InvalidArgumentException('Unsupported pin mode for pin #', $this->_pinNumber);
@@ -86,7 +86,7 @@ namespace Carica\Gpio {
     }
     
     public function setDigital($isHigh) {
-      $this->setValue($isHigh ? 0.0 : 1.0);
+      $this->setValue($isHigh ? 0 : 1);
     }
     
     public function getDigital() {

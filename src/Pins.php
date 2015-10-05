@@ -6,10 +6,12 @@ namespace Carica\Gpio {
     implements \ArrayAccess, \Countable, \IteratorAggregate {
     
     private $_pins = [];
+    private $_commands = NULL;
     
-    public function __construct($capabilities) {
+    public function __construct(Commands $commands, $capabilities) {
+      $this->_commands = $commands;
       foreach ($capabilities as $pinNumber => $modes) {
-        $this->_pins[$pinNumber] = new Pin($pinNumber, $modes);
+        $this->_pins[$pinNumber] = new Pin($this->_commands, $pinNumber, $modes);
       }
     }
     
