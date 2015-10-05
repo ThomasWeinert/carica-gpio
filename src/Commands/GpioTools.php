@@ -22,6 +22,10 @@ namespace Carica\Gpio\Commands {
       return $this->execute('export', $pinNumber, $direction);
     }
 
+    function direction($pinNumber, $direction) {
+      return $this->execute('export', $pinNumber, $direction);
+    }
+
     function unexport($pinNumber) {
       return $this->execute('unexport', $pinNumber, 'in');
     }
