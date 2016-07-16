@@ -13,8 +13,76 @@ namespace Carica\Gpio\Boards {
         $commands,
         new \ArrayIterator(
           [
-            1 => [
-              Pin::MODE_OUTPUT => 1
+            4 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1
+            ],
+            5 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1
+            ],
+            6 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1
+            ],
+            12 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1,
+              Pin::MODE_PWM => 255
+            ],
+            13 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1,
+              Pin::MODE_PWM => 255
+            ],
+            16 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1
+            ],
+            17 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1
+            ],
+            18 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1
+            ],
+            19 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1,
+              Pin::MODE_PWM => 255
+            ],
+            20 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1
+            ],
+            21 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1
+            ],
+            22 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1
+            ],
+            23 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1
+            ],
+            24 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1
+            ],
+            25 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1
+            ],
+            26 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1
+            ],
+            27 => [
+              Pin::MODE_OUTPUT => 1,
+              Pin::MODE_INPUT => 1
             ]
           ]
         )

@@ -18,6 +18,7 @@ namespace Carica\Gpio {
     private $_value = 0; 
 
     private $_isInitialized = NULL;
+    private $_commands;
 
     public function __construct(Commands $commands, $pinNumber, array $supports = []) {
       $this->_commands = $commands;
@@ -38,7 +39,7 @@ namespace Carica\Gpio {
     } 
     
     public function unexport() {
-      $this->_isInitialized = !$this->_commands->unexport($this->_pinNumber);
+      $this->_isInitialized = (0 !== $this->_commands->unexport($this->_pinNumber));
     }
     
     private function addMode($mode, $maximum) {
@@ -50,8 +51,9 @@ namespace Carica\Gpio {
       case self::MODE_PWM :
       case self::MODE_ANALOG :
         $this->_modes[$mode] = $maximum;
+        return;
       }
-      throw new \InvalidArgumentException('Invalid pin mode for pin #', $this->_pinNumber);
+      throw new \InvalidArgumentException(sprintf('Invalid pin mode for pin #%d.', $this->_pinNumber));
     }
     
     private function setValue($value) {
@@ -59,7 +61,7 @@ namespace Carica\Gpio {
       if ($this->_mode == self::MODE_PWM) {
         $this->_commands->pwm($this->_pinNumber, round($value * $this->getMaximum()));
       } else {
-        $this->_commands->write($this->_pinNumber, $value > 0);
+        $this->_commands->write($this->_pinNumber, $value > 0 ? '1' : '0');
       }
       if ($value != $this->_value) {
         $this->_value = $value;
@@ -86,11 +88,11 @@ namespace Carica\Gpio {
     }
     
     public function setDigital($isHigh) {
-      $this->setValue($isHigh ? 0 : 1);
+      $this->setValue($isHigh ? 1 : 0);
     }
     
     public function getDigital() {
-      return $this->_value != 0;
+      return $this->_value > 0;
     }
     
     public function setAnalog($percent) {

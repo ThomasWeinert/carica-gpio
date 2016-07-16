@@ -7,9 +7,7 @@ namespace Carica\Gpio {
 
     function unexport($pinNumber);
 
-    function direction($pinNumber, $direction);
-
-    function read($pinNumber, $value);
+    function read($pinNumber);
 
     function mode($pinNumber, $mode);
 
