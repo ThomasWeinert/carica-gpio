@@ -9,7 +9,7 @@ $board = new \Carica\Gpio\Boards\RaspberryPiB(
   new \Carica\Gpio\Commands\GpioTools()
 );
 /** @var Carica\Io\Device\Pin $pin */
-$pin = $board->pins[17];
+$pin = $board->pins[27];
 $pin->setMode(\Carica\Io\Device\Pin::MODE_OUTPUT);
 
 $loop->setInterval(

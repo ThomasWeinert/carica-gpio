@@ -1,13 +1,13 @@
 Carica Gpio
 ===========
 
-License: [The MIT License](http://www.opensource.org/licenses/mit-license.php)
+License: [The MIT License](http://opensource.org/licenses/mit-license.php)
 
-Copyright: 2015 Thomas Weinert <thomas@weinert.info>
+Copyright: 2015-2016 Thomas Weinert <thomas@weinert.info>
 
 Carica Gpio implements Carica Io device interfaces using GPIO. 
 
-***Work in progress, not yet functional or tested.***
+***Work in progress***
 
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/ThomasWeinert/carica-chip)
 
@@ -21,4 +21,4 @@ necessary interface implementations for [Carica Chip](https://github.com/ThomasW
 Dependencies
 ------------
 
-Carica Gpio uses Carica Io a non blocking I/O library for PHP. At least PHP 5.4 is needed.
+Carica Gpio uses Carica Io a non blocking I/O library for PHP. At least PHP 5.6 is needed.

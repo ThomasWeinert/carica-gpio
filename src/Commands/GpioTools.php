@@ -56,7 +56,6 @@ namespace Carica\Gpio\Commands {
       foreach ($arguments as $argument) {
         $command .= ' '.escapeshellarg($argument);
       }
-      echo $command, "\n";
       system($command, $result);
       return ($result === 0);
     }
