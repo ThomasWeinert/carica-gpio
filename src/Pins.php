@@ -38,5 +38,11 @@ namespace Carica\Gpio {
     public function getIterator() {
       return new \ArrayIterator($this->_pins);
     }
+
+    public function setUpdateInterval($milliseconds) {
+      foreach ($this->_pins as $pin) {
+        $pin->setUpdateInterval($milliseconds);
+      }
+    }
   }
 }

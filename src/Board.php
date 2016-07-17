@@ -14,6 +14,12 @@ namespace Carica\Gpio {
      * @var \Traversable
      */
     private $_capabilities = NULL;
+
+    /**
+     * @var int update interval for input pins
+     */
+    private $_updateInterval = 100;
+
     /**
      * @var Pins
      */
@@ -42,6 +48,19 @@ namespace Carica\Gpio {
         $this->_pins = new Pins($this->_commands, $this->_capabilities);
       }
       return $this->_pins;
+    }
+
+    /**
+     * Set the update interval for input reading, 0 disables the
+     * automatic update, it will update if you read the pin value.
+     *
+     * @param int $milliseconds
+     */
+    public function setUpdateInterval($milliseconds) {
+      $this->_updateInterval = $milliseconds;
+      if (isset($this->_pins)) {
+        $this->_pins->setUpdateInterval($milliseconds);
+      }
     }
   }
 }
