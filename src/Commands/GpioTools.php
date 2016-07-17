@@ -12,7 +12,8 @@ namespace Carica\Gpio\Commands {
      */
     private static $_gpioModes = [
       Pin::MODE_INPUT => 'in',
-      Pin::MODE_OUTPUT => 'out'
+      Pin::MODE_OUTPUT => 'out',
+      Pin::MODE_PWM => 'pwm'
     ];
 
     private $_command = 'gpio';

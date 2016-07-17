@@ -14,19 +14,36 @@ namespace Carica\Gpio {
         $this->_pins[$pinNumber] = new Pin($this->_commands, $pinNumber, $pinCapabilities);
       }
     }
-    
+
+    /**
+     * @param int $offset
+     */
     public function offsetExists($offset) {
       return array_key_exists($offset, $this->_pins);
     }
-    
+
+    /**
+     * @param int $offset
+     * @return Pin
+     */
     public function offsetGet($offset) {
+      if (!array_key_exists($offset, $this->_pins)) {
+        throw new \InvalidArgumentException(sprintf('Pin "%d" is not defined for this board.', $offset));
+      }
       return $this->_pins[$offset];
     }
-    
+
+    /**
+     * @param int $offset
+     * @param Pin $value
+     */
     public function offsetSet($offset, $value) {
       return \LogicException('Pins can not be set.');
     }
-    
+
+    /**
+     * @param int $offset
+     */
     public function offsetUnset($offset) {
       return \LogicException('Pins can not be unset.');
     }
