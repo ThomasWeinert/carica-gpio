@@ -16,6 +16,17 @@ namespace Carica\Gpio {
     const DIRECTION_IN = 'in';
     const UPDATE_CHANGE_DELTA = 0.0001;
 
+
+    public static $MODE_LABELS = [
+      self::MODE_UNKNOWN => 'unknown',
+      self::MODE_INPUT => 'input',
+      self::MODE_OUTPUT => 'output',
+      self::MODE_ANALOG => 'analog',
+      self::MODE_PWM => 'pwm',
+      self::MODE_SHIFT => 'shift',
+      self::MODE_I2C => 'i2c',
+    ];
+
     private $_pinNumber = 0;
     private $_pinGpioNumber = 0;
     private $_modes = [];

@@ -62,7 +62,7 @@ namespace Carica\Gpio\Commands {
           throw new \InvalidArgumentException(
             sprintf(
               'Pin mode "%s" not support by commands implementation.',
-              Pin::MODE_LABELS[$mode]
+              \Carica\Gpio\Pin::$MODE_LABELS[$mode]
             )
           );
       }
