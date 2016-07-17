@@ -10,8 +10,8 @@ namespace Carica\Gpio {
     
     public function __construct(Commands $commands, $capabilities) {
       $this->_commands = $commands;
-      foreach ($capabilities as $pinNumber => $modes) {
-        $this->_pins[$pinNumber] = new Pin($this->_commands, $pinNumber, $modes);
+      foreach ($capabilities as $pinNumber => $pinCapabilities) {
+        $this->_pins[$pinNumber] = new Pin($this->_commands, $pinNumber, $pinCapabilities);
       }
     }
     

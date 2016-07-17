@@ -7,13 +7,13 @@ namespace Carica\Gpio\Board {
   class Factory {
 
     public function getBoard(Configuration $configuration) {
-      $boardOption = $configuration->board;
       $commandsOption = $configuration->commands;
       if (is_callable($commandsOption)) {
         $commands = $commandsOption($configuration);
       } else {
-        $commands = $this->getCommandsByClass($boardOption);
+        $commands = $this->getCommandsByClass($commandsOption);
       }
+      $boardOption = $configuration->board;
       if (is_callable($boardOption)) {
         $board = $boardOption($commands);
       } else {
@@ -22,7 +22,7 @@ namespace Carica\Gpio\Board {
       return $board;
     }
 
-    private function getBoardByClass($class, $commands) {
+    private function getBoardByClass($class, Commands $commands) {
       return new $class($commands);
     }
 

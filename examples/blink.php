@@ -2,7 +2,7 @@
 $board = include('bootstrap.php');
 
 /** @var Carica\Io\Device\Pin $pin */
-$pin = $board->pins[27];
+$pin = $board->pins[13];
 $pin->setMode(\Carica\Io\Device\Pin::MODE_OUTPUT);
 
 $loop = \Carica\Io\Event\Loop\Factory::get();

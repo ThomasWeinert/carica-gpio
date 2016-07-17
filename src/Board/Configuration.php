@@ -2,7 +2,7 @@
 
 namespace Carica\Gpio\Board {
 
-  use Carica\Gpio\Boards\RaspberryPiB;
+  use Carica\Gpio\Boards\RaspberryPi;
   use Carica\Gpio\Commands;
 
   /**
@@ -14,7 +14,7 @@ namespace Carica\Gpio\Board {
   class Configuration {
 
     const DEFAULTS = [
-      'board' => RaspberryPiB::class,
+      'board' => RaspberryPi\Rev2::class,
       'commands' => Commands::class
     ];
 
@@ -22,7 +22,7 @@ namespace Carica\Gpio\Board {
 
     public function __construct(array $options = []) {
       foreach ($options as $name => $value) {
-        $options->$name = $value;
+        $this->$name = $value;
       }
     }
 

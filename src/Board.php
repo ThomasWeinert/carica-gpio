@@ -4,6 +4,8 @@ namespace Carica\Gpio {
 
   class Board {
 
+    const GPIO_PIN_MAPPING = 'gpio_pin';
+
     /**
      * @var Commands
      */

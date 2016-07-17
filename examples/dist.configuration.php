@@ -4,7 +4,7 @@
  * The board class name.
  * The board defines the pin header configuration.
  */
-define('GPIO_BOARD', \Carica\Gpio\Boards\RaspberryPiB::class);
+define('GPIO_BOARD', \Carica\Gpio\Boards\RaspberryPi\Rev2::class);
 
 /**
  * The commands class name.
