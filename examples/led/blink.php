@@ -1,5 +1,5 @@
 <?php
-$board = include('../bootstrap.php');
+$board = include(__DIR__.'/../bootstrap.php');
 
 /** @var Carica\Io\Device\Pin $pin */
 $pin = $board->pins[35];

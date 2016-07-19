@@ -1,5 +1,5 @@
 <?php
-$board = include('../bootstrap.php');
+$board = include(__DIR__.'/../bootstrap.php');
 
 use Carica\Io;
 

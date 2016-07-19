@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ea785f580f6bb03f3f58478a4bdfde04",
-    "content-hash": "d1a4c43cdad2d19e836a4133a7869e92",
+    "hash": "9104ae6dbf7eca374941497a9f5a1ec8",
+    "content-hash": "a6c261830dbf93e1180a55c8f592f9ac",
     "packages": [
         {
             "name": "carica/io",
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ThomasWeinert/carica-io.git",
-                "reference": "77676a3f6d7cc4c8fe13e269cdcacf97fe35c6b0"
+                "reference": "1d412d25df71cd7823524b98cb14222fb4c407f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ThomasWeinert/carica-io/zipball/77676a3f6d7cc4c8fe13e269cdcacf97fe35c6b0",
-                "reference": "77676a3f6d7cc4c8fe13e269cdcacf97fe35c6b0",
+                "url": "https://api.github.com/repos/ThomasWeinert/carica-io/zipball/1d412d25df71cd7823524b98cb14222fb4c407f3",
+                "reference": "1d412d25df71cd7823524b98cb14222fb4c407f3",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +46,7 @@
                 "asynchronous-io",
                 "non-blocking-io"
             ],
-            "time": "2016-07-16 14:57:42"
+            "time": "2016-07-18 20:06:46"
         }
     ],
     "packages-dev": [],
@@ -58,7 +58,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4"
+        "php": ">=5.6"
     },
     "platform-dev": []
 }

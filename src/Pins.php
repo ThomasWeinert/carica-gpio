@@ -61,5 +61,11 @@ namespace Carica\Gpio {
         $pin->setUpdateInterval($milliseconds);
       }
     }
+
+    public function exportAll() {
+      foreach ($this->_pins as $pin) {
+        $pin->export();
+      }
+    }
   }
 }
