@@ -58,7 +58,7 @@ namespace Carica\Gpio {
       };
 
       if (is_string($data)) {
-        $values = array_slice(unpack("C*", "\0".$value), 1);
+        $values = array_slice(unpack("C*", "\0".$data), 1);
       } elseif (is_array($data)) {
         $values = $data;
       } else {

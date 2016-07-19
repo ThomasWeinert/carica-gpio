@@ -64,7 +64,11 @@ namespace Carica\Gpio {
       }
     }
 
-    private function getGpioNumber() {
+    public function getNumber() {
+      return $this->_pinNumber;
+    }
+
+    public function getGpioNumber() {
       return $this->_pinGpioNumber;
     }
 
