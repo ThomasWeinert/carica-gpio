@@ -101,9 +101,9 @@ namespace Carica\Gpio {
     private function setValue($value) {
       $this->initialize();
       if ($this->_mode == self::MODE_PWM) {
-        $this->_commands->pwm($this->getGpioNumber(), round($value * $this->getMaximum()));
+        $this->_commands->write($this->getGpioNumber(), $this->_mode, round($value * $this->getMaximum()));
       } else {
-        $this->_commands->write($this->getGpioNumber(), $value > 0 ? '1' : '0');
+        $this->_commands->write($this->getGpioNumber(), $this->_mode, $value > 0 ? '1' : '0');
       }
       if (abs($value - $this->_value) > self::UPDATE_CHANGE_DELTA) {
         $this->_value = $value;
@@ -199,7 +199,7 @@ namespace Carica\Gpio {
 
     private function readValueFromBoard() {
       if ($this->_mode == Pin::MODE_INPUT || $this->_mode == Pin::MODE_ANALOG) {
-        $value = (int)$this->_commands->read($this->getGpioNumber());
+        $value = (int)$this->_commands->read($this->getGpioNumber(), $this->_mode);
         if ($this->_mode == self::MODE_ANALOG) {
           $this->_value = $value / $this->getMaximum();
         } else {

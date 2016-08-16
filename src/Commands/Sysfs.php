@@ -43,7 +43,7 @@ namespace Carica\Gpio\Commands {
       return !file_exists($file);
     }
 
-    public function read($pinNumber) {
+    public function read($pinNumber, $mode) {
       $file = $this->getFullPath(self::PATH_GPIO, $pinNumber).'/value';
       return $this->readGpio($file);
     }
@@ -68,14 +68,16 @@ namespace Carica\Gpio\Commands {
       }
     }
 
-    public function write($pinNumber, $value) {
+    public function write($pinNumber, $mode, $value) {
       $file = $this->getFullPath(self::PATH_GPIO, $pinNumber).'/value';
-      $this->writeGpio($file, $value > 0 ? 1 : 0);
-    }
-
-    public function pwm($pinNumber, $value) {
-      $file = $this->getFullPath(self::PATH_GPIO, $pinNumber).'/value';
-      $this->writeGpio($file, $value);
+      switch ($mode) {
+      case Pin::MODE_OUTPUT :
+        $this->writeGpio($file, $value > 0 ? 1 : 0);
+        break;
+      case Pin::MODE_PWM :
+        $this->writeGpio($file, $value);
+        break;
+      }
     }
 
     private function readGpio($file) {

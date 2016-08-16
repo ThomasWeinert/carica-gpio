@@ -37,16 +37,17 @@ namespace Carica\Gpio\Commands {
       return $this->execute('', 'unexport', $pinNumber, 'in');
     }
 
-    public function read($pinNumber) {
+    public function read($pinNumber, $mode) {
       return $this->execute('-g', 'read', $pinNumber);
     }
 
-    public function write($pinNumber, $value) {
-      return $this->execute('-g', 'write', $pinNumber, $value);
-    }
-
-    public function pwm($pinNumber, $value) {
-      return $this->execute('-g', 'pwm', $pinNumber, $value);
+    public function write($pinNumber, $mode, $value) {
+      switch ($mode) {
+      case Pin::MODE_OUTPUT :
+        return $this->execute('-g', 'write', $pinNumber, $value);
+      case Pin::MODE_PWM :
+        return $this->execute('-g', 'pwm', $pinNumber, $value);
+      }
     }
 
     private function execute($options, ...$arguments) {
