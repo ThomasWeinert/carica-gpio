@@ -1,5 +1,6 @@
 <?php
 $board = include(__DIR__.'/../bootstrap.php');
+$board->pins->exportAll();
 
 use Carica\Io;
 

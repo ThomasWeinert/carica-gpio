@@ -30,6 +30,8 @@ namespace Carica\Gpio\Commands {
       $file = $this->getFullPath(self::PATH_GPIO, $pinNumber);
       if (!file_exists($file)) {
         $this->writeGpio($this->getFullPath(self::PATH_EXPORT), $pinNumber);
+        clearstatcache(FALSE, $file);
+        clearstatcache(FALSE, $file.'/direction');
       }
       $this->writeGpio($file.'/direction', $direction);
       return file_exists($file);
@@ -39,6 +41,7 @@ namespace Carica\Gpio\Commands {
       $file = $this->getFullPath(self::PATH_UNEXPORT);
       if (file_exists($file)) {
         $this->writeGpio($this->getFullPath(self::PATH_UNEXPORT), $pinNumber);
+        clearstatcache(FALSE, $file);
       }
       return !file_exists($file);
     }

@@ -15,6 +15,9 @@
     "php": ">=5.6",
     "carica/io": "dev-master"
   },
+  "suggest" : {
+    "ext/wires" : "Bindings for the WiringPi library"
+  },
   "autoload": {
     "psr-4": {
       "Carica\\Gpio\\": "src/"

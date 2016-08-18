@@ -59,7 +59,7 @@ namespace Carica\Gpio {
     }
 
     private function initialize() {
-      if (!$this->_isInitialized) {
+      if (NULL === $this->_isInitialized) {
         $this->export();
       }
     }

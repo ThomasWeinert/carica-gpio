@@ -1,5 +1,6 @@
 <?php
 $board = include(__DIR__.'/../bootstrap.php');
+$board->pins->exportAll();
 
 /** @var Carica\Io\Device\Pin $pin */
 $pin = $board->pins[35];
