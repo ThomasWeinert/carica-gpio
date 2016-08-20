@@ -2,6 +2,10 @@
 
 namespace Carica\Gpio {
 
+  /**
+   * @property Commands $commands
+   * @property Pins $pins
+   */
   class Board {
 
     const GPIO_PIN_MAPPING = 'gpio_pin';
@@ -37,6 +41,8 @@ namespace Carica\Gpio {
       switch ($name) {
       case 'pins' :
         return $this->pins();
+      case 'commands' :
+        return $this->commands();
       }
       throw new \LogicException(sprintf('Unknown property %s::$%s', __CLASS__, $name));
     }
@@ -48,6 +54,10 @@ namespace Carica\Gpio {
         $this->_pins = new Pins($this->_commands, $this->_capabilities);
       }
       return $this->_pins;
+    }
+
+    public function commands() {
+      return $this->_commands;
     }
 
     /**
