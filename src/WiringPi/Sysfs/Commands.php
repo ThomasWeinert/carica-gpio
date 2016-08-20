@@ -1,9 +1,9 @@
 <?php
-namespace Carica\Gpio\Commands\WiringPi {
+namespace Carica\Gpio\WiringPi\Sysfs {
 
   use Carica\Gpio\WiringPi as Wires;
 
-  class Sysfs extends Gpio {
+  class Commands extends Gpio {
 
     private $_gpioTools;
     protected $_mappingMode = Wires\SETUP_SYSFS;

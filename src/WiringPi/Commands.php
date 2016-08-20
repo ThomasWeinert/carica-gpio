@@ -1,12 +1,11 @@
 <?php
-namespace Carica\Gpio\Commands\WiringPi {
+namespace Carica\Gpio\WiringPi {
 
   use Carica\Io\Device\Pin;
-  use Carica\Gpio\WiringPi as Wires;
 
-  class Gpio implements \Carica\Gpio\Commands {
+  class Commands implements \Carica\Gpio\Commands {
 
-    protected $_mappingMode = Wires\SETUP_GPIO;
+    protected $_mappingMode = SETUP_GPIO;
     private static $_initialized = FALSE;
 
     public function __construct() {
@@ -18,7 +17,7 @@ namespace Carica\Gpio\Commands\WiringPi {
     private function initialize() {
       if (!self::$_initialized) {
         self::$_initialized = TRUE;
-        Wires\setup($this->_mappingMode);
+        setup($this->_mappingMode);
       }
     }
 
@@ -35,9 +34,9 @@ namespace Carica\Gpio\Commands\WiringPi {
       switch ($mode) {
       case Pin::MODE_INPUT :
       case Pin::MODE_OUTPUT :
-        return Wires\digitalRead($pinNumber);
+        return digitalRead($pinNumber);
       case Pin::MODE_PWM :
-        return Wires\analogRead($pinNumber);
+        return analogRead($pinNumber);
       }
       return 0;
     }
@@ -45,15 +44,15 @@ namespace Carica\Gpio\Commands\WiringPi {
     public function mode($pinNumber, $mode) {
       $this->initialize();
       $modeMap = [
-        Pin::MODE_INPUT => Wires\INPUT,
-        Pin::MODE_OUTPUT => Wires\OUTPUT,
-        Pin::MODE_PWM => Wires\PWM_OUTPUT,
+        Pin::MODE_INPUT => INPUT,
+        Pin::MODE_OUTPUT => OUTPUT,
+        Pin::MODE_PWM => PWM_OUTPUT,
       ];
       switch ($mode) {
       case Pin::MODE_INPUT :
       case Pin::MODE_OUTPUT :
       case Pin::MODE_PWM :
-        Wires\pinMode($pinNumber, $modeMap[$mode]);
+        pinMode($pinNumber, $modeMap[$mode]);
         return TRUE;
       default :
         throw new \InvalidArgumentException(
@@ -69,10 +68,10 @@ namespace Carica\Gpio\Commands\WiringPi {
       $this->initialize();
       switch ($mode) {
       case Pin::MODE_OUTPUT :
-        Wires\digitalWrite($pinNumber, $value);
+        digitalWrite($pinNumber, $value);
         break;
       case Pin::MODE_PWM :
-        Wires\pwmWrite($pinNumber, $value);
+        pwmWrite($pinNumber, $value);
         break;
       }
     }

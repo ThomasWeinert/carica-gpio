@@ -1,25 +1,17 @@
 <?php
-namespace Carica\Gpio\Commands {
+namespace Carica\Gpio\Sysfs {
 
-  use Carica\Gpio\Commands;
   use Carica\Io\Device\Pin;
 
-  class Sysfs implements Commands {
+  class Commands implements \Carica\Gpio\Commands {
 
-    const PATH_GPIO = '/gpio';
-    const PATH_EXPORT = '/gpio/export';
-    const PATH_UNEXPORT = '/gpio/unexport';
+    const PATH_GPIO = '/sys/class/gpio';
+    const PATH_EXPORT = '/sys/class/gpio/export';
+    const PATH_UNEXPORT = '/sys/class/gpio/unexport';
     const PIN_PREFIX = 'gpio';
-    private $_basePath = '/sys/class';
 
-    public function __construct($basePath = NULL) {
-      if (!empty($basePath)) {
-        $this->_basePath = $basePath;
-      }
-    }
-
-    private function getFullPath($relativePath, $pinNumber = NULL) {
-      $path = $this->_basePath.$relativePath;
+    private function getFullPath($basePath, $pinNumber = NULL) {
+      $path = $basePath;
       if (is_int($pinNumber)) {
         $path .= '/'.self::PIN_PREFIX.$pinNumber;
       }

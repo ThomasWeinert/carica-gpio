@@ -1,10 +1,9 @@
 <?php
-namespace Carica\Gpio\Commands {
+namespace Carica\Gpio\GpioTools {
 
-  use Carica\Gpio\Commands;
   use Carica\Io\Device\Pin;
 
-  class GpioTools implements Commands {
+  class Commands implements \Carica\Gpio\Commands {
 
     /**
      * in/out/pwm/clock/up/down/tri
