@@ -11,27 +11,27 @@ namespace Carica\Gpio\Board {
      * @param Configuration $configuration
      * @return Board
      */
-    public function getBoard(Configuration $configuration) {
+    public function createBoard(Configuration $configuration) {
       $commandsOption = $configuration->commands;
       if (is_callable($commandsOption)) {
         $commands = $commandsOption($configuration);
       } else {
-        $commands = $this->getCommandsByClass($commandsOption);
+        $commands = $this->createCommandsByClass($commandsOption);
       }
       $boardOption = $configuration->board;
       if (is_callable($boardOption)) {
         $board = $boardOption($commands);
       } else {
-        $board = $this->getBoardByClass($boardOption, $commands);
+        $board = $this->createBoardByClass($boardOption, $commands);
       }
       return $board;
     }
 
-    private function getBoardByClass($class, Commands $commands) {
+    private function createBoardByClass($class, Commands $commands) {
       return new $class($commands);
     }
 
-    private function getCommandsByClass($class) {
+    private function createCommandsByClass($class) {
       return new $class();
     }
   }

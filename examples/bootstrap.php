@@ -18,5 +18,5 @@ $configuration = new Board\Configuration(
   ]
 );
 
-return $factory->getBoard($configuration);
+return $factory->createBoard($configuration);
 
