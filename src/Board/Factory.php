@@ -2,10 +2,15 @@
 
 namespace Carica\Gpio\Board {
 
+  use Carica\Gpio\Board;
   use Carica\Gpio\Commands;
 
   class Factory {
 
+    /**
+     * @param Configuration $configuration
+     * @return Board
+     */
     public function getBoard(Configuration $configuration) {
       $commandsOption = $configuration->commands;
       if (is_callable($commandsOption)) {
