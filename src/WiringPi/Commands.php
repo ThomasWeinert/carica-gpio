@@ -1,7 +1,8 @@
 <?php
 namespace Carica\Gpio\WiringPi {
 
-  use Carica\Io\Device\Pin;
+  use Carica\Gpio\ShiftOut;
+  use Carica\Gpio\Pin;
 
   class Commands implements \Carica\Gpio\Commands {
 
@@ -58,7 +59,7 @@ namespace Carica\Gpio\WiringPi {
         throw new \InvalidArgumentException(
           sprintf(
             'Pin mode "%s" not support by commands implementation.',
-            \Carica\Gpio\Pin::$MODE_LABELS[$mode]
+            Pin::$MODE_LABELS[$mode]
           )
         );
       }
@@ -74,6 +75,12 @@ namespace Carica\Gpio\WiringPi {
         pwmWrite($pinNumber, $value);
         break;
       }
+    }
+
+    public function createShiftOut(Pin $latchPin, Pin $clockPin, Pin $dataPin, $isHighLatch) {
+      return new ShiftOut(
+        $latchPin, $clockPin, $dataPin, $isHighLatch
+      );
     }
   }
 }

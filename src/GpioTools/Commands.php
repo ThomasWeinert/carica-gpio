@@ -1,7 +1,8 @@
 <?php
 namespace Carica\Gpio\GpioTools {
 
-  use Carica\Io\Device\Pin;
+  use Carica\Gpio\ShiftOut;
+  use Carica\Gpio\Pin;
 
   class Commands implements \Carica\Gpio\Commands {
 
@@ -59,6 +60,12 @@ namespace Carica\Gpio\GpioTools {
       }
       system($command, $result);
       return ($result === 0);
+    }
+
+    public function createShiftOut(Pin $latchPin, Pin $clockPin, Pin $dataPin, $isHighLatch) {
+      return new ShiftOut(
+        $latchPin, $clockPin, $dataPin, $isHighLatch
+      );
     }
   }
 }

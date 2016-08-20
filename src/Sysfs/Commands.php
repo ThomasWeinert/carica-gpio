@@ -1,7 +1,7 @@
 <?php
 namespace Carica\Gpio\Sysfs {
 
-  use Carica\Io\Device\Pin;
+  use Carica\Gpio\Pin;
 
   class Commands implements \Carica\Gpio\Commands {
 
@@ -57,7 +57,7 @@ namespace Carica\Gpio\Sysfs {
           throw new \InvalidArgumentException(
             sprintf(
               'Pin mode "%s" not support by commands implementation.',
-              \Carica\Gpio\Pin::$MODE_LABELS[$mode]
+              Pin::$MODE_LABELS[$mode]
             )
           );
       }
@@ -81,6 +81,12 @@ namespace Carica\Gpio\Sysfs {
 
     private function writeGpio($file, $value) {
       file_put_contents($file, $value);
+    }
+
+    public function createShiftOut(Pin $latchPin, Pin $clockPin, Pin $dataPin, $isHighLatch) {
+      return new ShiftOut(
+        $latchPin, $clockPin, $dataPin, $isHighLatch
+      );
     }
   }
 }

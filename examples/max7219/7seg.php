@@ -1,4 +1,5 @@
 <?php
+/** @var Carica\Gpio\Board $board */
 $board = require(__DIR__.'/../bootstrap.php');
 $board->pins->exportAll();
 
@@ -9,11 +10,7 @@ $loop = Io\Event\Loop\Factory::get();
 $digits = 8;
 $maximum = pow(10, $digits) - 0;
 
-$max = new Carica\Gpio\ShiftOut(
-  $board->pins[38],
-  $board->pins[40],
-  $board->pins[36]
-);
+$max = $board->createShiftOut(38, 40, 36);
 $max->write([0x0F, 0x01]);
 sleep(1);
 $max->write([0x0F, 0x00]);

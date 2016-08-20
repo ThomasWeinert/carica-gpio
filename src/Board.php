@@ -2,6 +2,8 @@
 
 namespace Carica\Gpio {
 
+  use Carica\Io\Device\ShiftOut;
+
   /**
    * @property Commands $commands
    * @property Pins $pins
@@ -58,6 +60,20 @@ namespace Carica\Gpio {
 
     public function commands() {
       return $this->_commands;
+    }
+
+    /**
+     * @param $latchPinNumber
+     * @param $clockPinNumber
+     * @param $dataPinNumber
+     * @param bool $highLatch
+     * @return ShiftOut
+     */
+    public function createShiftOut($latchPinNumber, $clockPinNumber, $dataPinNumber, $highLatch = FALSE) {
+      $pins = $this->pins();
+      return $this->commands()->createShiftOut(
+        $pins{$latchPinNumber}, $pins[$clockPinNumber], $dataPinNumber, $highLatch
+      );
     }
 
     /**
