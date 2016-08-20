@@ -1,6 +1,7 @@
 <?php
-namespace Carica\Gpio {
+namespace Carica\Gpio\Sysfs {
 
+  use Carica\Gpio\Pin;
   use Carica\Io\Device;
 
   class ShiftOut implements Device\ShiftOut {
@@ -61,13 +62,15 @@ namespace Carica\Gpio {
         $values = array((int)$data);
       }
 
-      $clockPin = fopen(self::PIN_PREFIX.$this->_clockPin->getGpioNumber(), 'w');
-      $dataPin = fopen(self::PIN_PREFIX.$this->_dataPin->getGpioNumber(), 'w');
-
+      $clockPin = fopen(self::PIN_PREFIX.$this->_clockPin->getGpioNumber().'/value', 'w');
+      $dataPin = fopen(self::PIN_PREFIX.$this->_dataPin->getGpioNumber().'/value', 'w');
+      if (!$clockPin || !$dataPin) {
+        throw new \LogicException('Can not open gpio pins for data/clock.');
+      }
       $write = function($value, $mask) use ($clockPin, $dataPin) {
-        fwrite($clockPin, 0);
-        fwrite($dataPin, ($value & $mask) ? 1 : 0);
-        fwrite($clockPin, 1);
+        fwrite($clockPin, '0');
+        fwrite($dataPin, ($value & $mask) ? '1' : '0');
+        fwrite($clockPin, '1');
       };
 
       foreach ($values as $value) {
