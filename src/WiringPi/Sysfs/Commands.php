@@ -1,15 +1,15 @@
 <?php
 namespace Carica\Gpio\WiringPi\Sysfs {
 
-  use Carica\Gpio\WiringPi as Wires;
+  use Carica\Gpio\WiringPi;
 
-  class Commands extends Gpio {
+  class Commands extends WiringPi\Commands {
 
     private $_gpioTools;
-    protected $_mappingMode = Wires\SETUP_SYSFS;
+    protected $_mappingMode = WiringPi\SETUP_SYSFS;
 
     public function __construct() {
-      $this->_gpioTools = new \Carica\Gpio\Commands\GpioTools();
+      $this->_gpioTools = new \Carica\Gpio\GpioTools\Commands();
     }
 
     public function export($pinNumber, $direction) {

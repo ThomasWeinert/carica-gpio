@@ -72,7 +72,7 @@ namespace Carica\Gpio {
     public function createShiftOut($latchPinNumber, $clockPinNumber, $dataPinNumber, $highLatch = FALSE) {
       $pins = $this->pins();
       return $this->commands()->createShiftOut(
-        $pins{$latchPinNumber}, $pins[$clockPinNumber], $dataPinNumber, $highLatch
+        $pins{$latchPinNumber}, $pins[$clockPinNumber], $pins[$dataPinNumber], $highLatch
       );
     }
 
