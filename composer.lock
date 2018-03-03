@@ -4,25 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ff560b513681ebd414dd3adda5f348e2",
-    "content-hash": "a6c261830dbf93e1180a55c8f592f9ac",
+    "content-hash": "73ac26271f622e28923ca9964653d964",
     "packages": [
         {
             "name": "carica/io",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ThomasWeinert/carica-io.git",
-                "reference": "1d412d25df71cd7823524b98cb14222fb4c407f3"
+                "reference": "8f996060d0bd01adda12c7e8e595ed962d8c71fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ThomasWeinert/carica-io/zipball/1d412d25df71cd7823524b98cb14222fb4c407f3",
-                "reference": "1d412d25df71cd7823524b98cb14222fb4c407f3",
+                "url": "https://api.github.com/repos/ThomasWeinert/carica-io/zipball/8f996060d0bd01adda12c7e8e595ed962d8c71fb",
+                "reference": "8f996060d0bd01adda12c7e8e595ed962d8c71fb",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6"
+                "php": ">=7.1"
             },
             "type": "library",
             "autoload": {
@@ -46,19 +45,17 @@
                 "asynchronous-io",
                 "non-blocking-io"
             ],
-            "time": "2016-07-18 20:06:46"
+            "time": "2018-03-02T16:29:58+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "carica/io": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6"
+        "php": ">=7.1"
     },
     "platform-dev": []
 }

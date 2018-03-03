@@ -2,7 +2,7 @@
   "name": "carica/gpio",
   "type": "library",
   "description": "Gpio library implementing Carica Io Devices",
-  "keywords": ["arduino", "firmata"],
+  "keywords": ["arduino", "gpio", "raspberrypi"],
   "homepage": "https://github.com/ThomasWeinert/carica-gpio",
   "license": "MIT",
   "authors": [
@@ -12,8 +12,8 @@
     }
   ],
   "require": {
-    "php": ">=5.6",
-    "carica/io": "dev-master"
+    "php": ">=7.1",
+    "carica/io": "^1.0"
   },
   "suggest" : {
     "ext/wires" : "Bindings for the WiringPi library"

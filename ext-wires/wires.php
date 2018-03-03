@@ -10,7 +10,7 @@ namespace Carica\Gpio\WiringPi {
 
   const SETUP_GPIO = 0;
   const SETUP_SYSFS = 1;
-  const SETUP_GPIO = 2;
+  const SETUP_WIRINGPI = 2;
 
   const INPUT = 0;
   const OUTPUT = 1;

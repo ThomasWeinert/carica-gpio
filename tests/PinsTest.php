@@ -4,7 +4,7 @@ namespace Carica\Gpio {
 
   require_once(__DIR__.'/bootstrap.php');
 
-  class PinsTest extends \PHPUnit_Framework_TestCase {
+  class PinsTest extends \PHPUnit\Framework\TestCase {
 
     public function testConstructor() {
       $commands = $this->getMockBuilder(Commands::class)->getMock();
